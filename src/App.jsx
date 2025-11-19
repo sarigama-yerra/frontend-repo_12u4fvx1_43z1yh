@@ -1,10 +1,14 @@
+import { useState } from 'react'
 import Hero from './components/Hero'
 import Portfolio from './components/Portfolio'
 import Testimonials from './components/Testimonials'
 import Clients from './components/Clients'
 import Contact from './components/Contact'
+import AdminPanel from './components/AdminPanel'
 
 function App() {
+  const [adminOpen, setAdminOpen] = useState(false)
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">
       {/* Header */}
@@ -15,7 +19,10 @@ function App() {
             <a href="#work" className="hover:text-white">Work</a>
             <a href="#contact" className="hover:text-white">Contact</a>
           </nav>
-          <a href="#contact" className="hidden md:inline-flex items-center rounded-full bg-white text-black px-4 py-2 text-sm font-medium">Start a Project</a>
+          <div className="flex items-center gap-3">
+            <button onClick={() => setAdminOpen(true)} className="hidden md:inline-flex items-center rounded-full bg-white/10 hover:bg-white/15 border border-white/20 text-white px-4 py-2 text-sm">Edit</button>
+            <a href="#contact" className="hidden md:inline-flex items-center rounded-full bg-white text-black px-4 py-2 text-sm font-medium">Start a Project</a>
+          </div>
         </div>
       </header>
 
@@ -29,6 +36,8 @@ function App() {
         {/* Footer */}
         <footer className="py-10 text-center text-white/50 text-sm">© {new Date().getFullYear()} Studio — Clean brands, thoughtful motion.</footer>
       </main>
+
+      <AdminPanel open={adminOpen} onClose={() => setAdminOpen(false)} />
     </div>
   )
 }
