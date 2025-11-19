@@ -4,7 +4,7 @@ const CATEGORIES = ['Branding', 'Animation', 'Motion', '3D']
 
 function Card({ card }) {
   return (
-    <article className="group relative overflow-hidden rounded-xl bg-white/5 border border-white/10">
+    <a href={`/project/${card.id}`} className="group block relative overflow-hidden rounded-xl bg-white/5 border border-white/10">
       {card.image_url ? (
         <img src={card.image_url} alt={card.title} className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
       ) : (
@@ -23,7 +23,7 @@ function Card({ card }) {
           </div>
         ) : null}
       </div>
-    </article>
+    </a>
   )
 }
 
